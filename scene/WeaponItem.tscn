@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://ckqvtf5g12acb"]
+
+[ext_resource type="Script" uid="uid://beqevjabrd0xh" path="res://script/WeaponItem.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bplo3ki2sv2yn" path="res://tileset/weaponType.png" id="2_weapon"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yqrb3"]
+
+[node name="WeaponItem" type="PanelContainer" unique_id=676144747]
+custom_minimum_size = Vector2(140, 140)
+offset_right = 140.0
+offset_bottom = 140.0
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yqrb3")
+script = ExtResource("1_script")
+
+[node name="Root" type="Control" parent="." unique_id=1011543437]
+clip_contents = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="Root" unique_id=1255620103]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_weapon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ApLabel" type="Label" parent="Root" unique_id=34354718]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 48.0
+offset_bottom = 32.0
+scale = Vector2(1, 0.99794686)
+theme_override_colors/font_color = Color(1, 0.5647059, 0.15294118, 1)
+theme_override_font_sizes/font_size = 16
+text = "3"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root" unique_id=1891844766]
+clip_contents = true
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1, 0.9930849)
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="Root/VBoxContainer" unique_id=242864139]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Weapon"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DamageLabel" type="Label" parent="Root/VBoxContainer" unique_id=859622299]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "10-20"
+horizontal_alignment = 1
+vertical_alignment = 1

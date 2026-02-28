@@ -88,23 +88,10 @@ func spawn_characters(characters: Array, is_enemy: bool):
 	available_cells.shuffle()
 	
 	for char_data in characters:
-		# Spawn UI Panel
 		var panel = info_panel_scene.instantiate()
-		
-		# Set scale for panel to fit more on screen
-		# Use a Control wrapper to enforce size if needed, but simple scaling might work visually
-		# However, in HBoxContainer, scale property is ignored for layout but affects drawing.
-		# A better way is to set custom_minimum_size on the panel instance if we want to shrink it,
-		# but the contents are fixed pixel size. 
-		# Let's just scale it down to 0.65 to fit 3-4 items on 412 width.
-		# 195 * 0.65 = ~127. 127 * 3 = 381 < 412.
-		panel.scale = Vector2(0.65, 0.65)
-		# To make the container respect the scaled size, we need to wrap it in a Control
-		# or set custom_minimum_size on the panel itself (but that clips content if not scaled).
-		# A simple trick: wrap in a Control with desired min size.
-		
+
 		var wrapper = Control.new()
-		wrapper.custom_minimum_size = Vector2(195 * 0.65, 251 * 0.65)
+		wrapper.custom_minimum_size = Vector2(320, 412)
 		wrapper.mouse_filter = Control.MOUSE_FILTER_PASS
 		wrapper.add_child(panel)
 		
@@ -117,21 +104,16 @@ func spawn_characters(characters: Array, is_enemy: bool):
 		var weapon_data = GameData.get_weapon(weapon_id)
 		panel.setup(char_data, weapon_data)
 		
-		# Spawn World Character
 		if available_cells.is_empty():
 			printerr("Not enough spawn points for %s!" % ("enemies" if is_enemy else "players"))
 			continue
 			
 		var cell = available_cells.pop_back()
-		# map_to_local returns the center of the cell in local coordinates
-		# Convert to global position to be safe regardless of node hierarchy
 		var local_pos = tile_map.map_to_local(cell)
 		var global_pos = tile_map.to_global(local_pos)
 		
 		var char_instance = character_scene.instantiate()
-		# Add character to the Battle node (self), not the TileMap, so they are on top
 		add_child(char_instance)
 		char_instance.global_position = global_pos
 		
-		# Setup character data
 		char_instance.setup(char_data["id"], is_enemy)
