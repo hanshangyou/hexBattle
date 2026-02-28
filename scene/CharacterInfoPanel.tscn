@@ -1,0 +1,189 @@
+[gd_scene format=3 uid="uid://dpvksaov6rfe5"]
+
+[ext_resource type="Script" path="res://script/CharacterInfoPanel.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bg_tex" path="res://scene/miniCharter_bg.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://wp_tex" path="res://scene/weapon_icon.png" id="3_wp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0, 0, 0, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stat"]
+bg_color = Color(0.85, 0.85, 0.85, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp"]
+bg_color = Color(0.95, 0.65, 0.65, 0.9)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ap"]
+bg_color = Color(0.66, 0.86, 0.95, 0.9)
+
+[node name="CharacterInfoPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(195, 251)
+offset_right = 195.0
+offset_bottom = 251.0
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="NamePanel" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/NamePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatsGrid" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="StrContainer" type="PanelContainer" parent="VBoxContainer/StatsGrid"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat")
+
+[node name="VBox" type="VBoxContainer" parent="VBoxContainer/StatsGrid/StrContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/StatsGrid/StrContainer/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "STR"
+horizontal_alignment = 1
+
+[node name="StrLabel" type="Label" parent="VBoxContainer/StatsGrid/StrContainer/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "10"
+horizontal_alignment = 1
+
+[node name="DexContainer" type="PanelContainer" parent="VBoxContainer/StatsGrid"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat")
+
+[node name="VBox" type="VBoxContainer" parent="VBoxContainer/StatsGrid/DexContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/StatsGrid/DexContainer/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "DEX"
+horizontal_alignment = 1
+
+[node name="DexLabel" type="Label" parent="VBoxContainer/StatsGrid/DexContainer/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "10"
+horizontal_alignment = 1
+
+[node name="ConContainer" type="PanelContainer" parent="VBoxContainer/StatsGrid"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat")
+
+[node name="VBox" type="VBoxContainer" parent="VBoxContainer/StatsGrid/ConContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/StatsGrid/ConContainer/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "CON"
+horizontal_alignment = 1
+
+[node name="ConLabel" type="Label" parent="VBoxContainer/StatsGrid/ConContainer/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "10"
+horizontal_alignment = 1
+
+[node name="SpdContainer" type="PanelContainer" parent="VBoxContainer/StatsGrid"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat")
+
+[node name="VBox" type="VBoxContainer" parent="VBoxContainer/StatsGrid/SpdContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/StatsGrid/SpdContainer/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "SPD"
+horizontal_alignment = 1
+
+[node name="SpdLabel" type="Label" parent="VBoxContainer/StatsGrid/SpdContainer/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "10"
+horizontal_alignment = 1
+
+[node name="EquipContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="WeaponIcon" type="TextureRect" parent="VBoxContainer/EquipContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_wp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ArmorIcon" type="TextureRect" parent="VBoxContainer/EquipContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_wp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BarsContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HpBar" type="ProgressBar" parent="VBoxContainer/BarsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_hp")
+value = 100.0
+show_percentage = false
+
+[node name="ApBar" type="ProgressBar" parent="VBoxContainer/BarsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_ap")
+value = 10.0
+show_percentage = false

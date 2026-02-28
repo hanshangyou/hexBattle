@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://battlescene123"]
+
+[ext_resource type="Script" path="res://script/BattleManager.gd" id="1_manager"]
+[ext_resource type="PackedScene" uid="uid://djhvypdctfsg5" path="res://scene/hexmap.tscn" id="2_hexmap"]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_manager")
+
+[node name="Hexmap" parent="." instance=ExtResource("2_hexmap")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="EnemyContainer" type="HBoxContainer" parent="CanvasLayer/UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 180.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="PlayerContainer" type="HBoxContainer" parent="CanvasLayer/UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -180.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
